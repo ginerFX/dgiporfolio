@@ -260,9 +260,9 @@
     <div class="tabs" id="tabs" role="group" aria-label="Company"></div>
     <div class="period" role="group" aria-label="Time period">
       <span class="plabel">Period</span>
-      <button class="pbtn" data-p="all" aria-pressed="true">All</button>
+      <button class="pbtn" data-p="all" aria-pressed="false">All</button>
       <button class="pbtn" data-p="3" aria-pressed="false">Last 3Y</button>
-      <button class="pbtn" data-p="5" aria-pressed="false">Last 5Y</button>
+      <button class="pbtn" data-p="5" aria-pressed="true">Last 5Y</button>
       <select id="pfrom" aria-label="From fiscal year"></select>
       <span class="plabel">to</span>
       <select id="pto" aria-label="To fiscal year"></select>
@@ -387,7 +387,7 @@ const DATA = {"built": "2026-11-25", "companies": {"PFE": {"title": "PFE — Pfi
    // Lichtenfeld payout rule on cash flow; same threshold as criterion 5 of the analyze-stock skill
   const RAW_FIRST = ['revenue','net_income','cash_acquisitions','diluted_shares','dps_declared'];
   const tickers = Object.keys(DATA.companies);
-  const state = { t: tickers[0], on: {}, range: {mode: 'all'} };   // range: all | last N fiscal years | custom from-to
+  const state = { t: tickers[0], on: {}, range: {mode: 'last', n: 5} };   // range: all | last N fiscal years | custom from-to (default: last 5 fiscal years)
   [...MONEY, REIT_METRIC, ...MINI, ...MARG, ...SAFE].forEach(m => state.on[m.id] = true);
   const cache = {};
 
